@@ -1,3 +1,4 @@
+//dummy Data
 export const data = [
     {
         title: 'Akshay Kumar Bell Bottom screened at world highest mobile theatre in Ladakh',

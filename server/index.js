@@ -1,5 +1,5 @@
 import express from 'express'; // lib import
-import cors from 'cros'
+import cors from 'cors'
 import bodyParser from 'body-parser'
 
 
