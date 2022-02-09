@@ -1,0 +1,1 @@
+import rssParser from 'rss-parser'
