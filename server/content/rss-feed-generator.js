@@ -7,6 +7,22 @@ export let ndtv = async () =>{
         let topStories = await parser.parseURL('http://feeds.feedburner.com/ndtvnews-top-stories?format=xml');    
         let international  = await parser.parseURL('http://feeds.feedburner.com/ndtvnews-world-news?format=xml');
         let national  = await parser.parseURL('http://feeds.feedburner.com/ndtvnews-india-news?format=xml');
+
+        // topStories.items.forEach(item=>{
+        //     console.log(item.title) // title
+        //     console.log(item.categories)
+        //     console.log(item.creator) // author
+        //     console.log(item.link)  // url
+        //     console.log(item.isoDate) 
+        //     console.log(item.pubDate) // pub date
+        //     console.log(item.summary)
+        //     console.log(item.contentSnippet)
+        //     console.log(item.content) // content
+        //     console.log(item.guid)
+        //     console.log(item.enclosure)
+        //     console.log(`!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!`)
+            
+        // })
           
     }
     catch(err){
@@ -16,6 +32,7 @@ export let ndtv = async () =>{
         console.log(`NDTV successfully delivered!`)
     }
 }
+ndtv()
 
 export let hindu = async () =>{
     try{
