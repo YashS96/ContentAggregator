@@ -8,6 +8,11 @@ export let ndtv = async () =>{
         let international  = await parser.parseURL('http://feeds.feedburner.com/ndtvnews-world-news?format=xml');
         let national  = await parser.parseURL('http://feeds.feedburner.com/ndtvnews-india-news?format=xml');
 
+        // let topStoriesData = topStories.items.map((element)=>{
+        //     return element.title;
+        // })
+        
+        console.log(topStories)
         // topStories.items.forEach(item=>{
         //     console.log(item.title) // title
         //     console.log(item.categories)
@@ -21,7 +26,6 @@ export let ndtv = async () =>{
         //     console.log(item.guid)
         //     console.log(item.enclosure)
         //     console.log(`!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!`)
-            
         // })
           
     }
