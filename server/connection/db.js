@@ -15,9 +15,9 @@ import mongoose from 'mongoose'
 
 // }
 
-const connection=()=>{ 
-    
-    mongoose.connect(`mongodb://dbUser:passfordb@content-aggregator-shard-00-00.ajhhe.mongodb.net:27017,content-aggregator-shard-00-01.ajhhe.mongodb.net:27017,content-aggregator-shard-00-02.ajhhe.mongodb.net:27017/content-aggregator?ssl=true&replicaSet=atlas-lqnuzj-shard-0&authSource=admin&retryWrites=true&w=majority`)
+const connection=(username,password)=>{ 
+    //substitue the DB username and pass
+    mongoose.connect(`mongodb://${username}:${password}@content-aggregator-shard-00-00.ajhhe.mongodb.net:27017,content-aggregator-shard-00-01.ajhhe.mongodb.net:27017,content-aggregator-shard-00-02.ajhhe.mongodb.net:27017/content-aggregator?ssl=true&replicaSet=atlas-lqnuzj-shard-0&authSource=admin&retryWrites=true&w=majority`)
     .then(()=>console.log(`DB connected!`))
     .catch(err=>console.log(`Oops! DB connection err: ${err}`))
 }

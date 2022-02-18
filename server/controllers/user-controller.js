@@ -47,6 +47,7 @@ export const userRegistration = (req, res) => {
     }
     let user = new User(userBody)
     let userIdentity = new UserIdentity(userIdentityBody)
+    
 
     }
     catch(err){
