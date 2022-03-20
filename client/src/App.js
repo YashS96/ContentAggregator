@@ -9,7 +9,7 @@ import Articles from './components/articles/Articles'
 
 const useStyles = makeStyles({
   app:{
-    backgroundColor:'#02353C'
+    backgroundColor:'#ffffff'
   },
   subheader:{
       marginTop: 50

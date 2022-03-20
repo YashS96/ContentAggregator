@@ -1,5 +1,5 @@
 import express from 'express'
-import  getNews from '../controllers/news-controller.js'
+import { getBBC, getHindu, getNDTV } from '../controllers/news-controller.js'
 // import { register, login } from '../controllers/user-controller.js'
 
 const router = new express.Router();
@@ -8,6 +8,10 @@ const router = new express.Router();
 
 // router.post('/login', login)
 
-router.get('/feed', getNews)
+router.get('/ndtvfeed', getNDTV)
+
+router.get('/bbcfeed', getBBC)
+
+router.get('/hindufeed', getHindu)
 
 export default router;

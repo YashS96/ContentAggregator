@@ -3,21 +3,22 @@ import { Box } from '@mui/material'
 import { makeStyles } from '@mui/styles'
 
 import Article from './Article'
-import { getTopStories } from '../../service/rss-api.js'
+import { getTopStoriesBBC, getTopStoriesNDTV, getTopStoriesHindu } from '../../service/rss-api.js'
 
 const useStyles = makeStyles({
     wrapper:{
-        width: '60%'
+        width: '50%',
+        margin : 'auto'
     },
     article: {
-
-    }
+ 
+    },
 })
 
 
 function Articles() {
 
-    const [newsFeed, setNewsFeed] =  useState([]);
+    const [newsFeed, setNewsFeed] =  useState([])
 
     useEffect(()=>{
         getNews();
@@ -25,9 +26,11 @@ function Articles() {
 
     const getNews = async () =>{
         try{
-            let news = await getTopStories();
-            setNewsFeed(news.items)
-          //  console.log(news.items) 
+            let src1 = await getTopStoriesNDTV()
+            let src2 = await getTopStoriesBBC()
+            let src3 = await getTopStoriesHindu()
+            setNewsFeed([...src1.items, ...src2.items,...src3.items])
+            //console.log([...src1.items, ...src2.items,...src3.items]) 
         }
         catch(e){
             console.log(e)
@@ -36,13 +39,14 @@ function Articles() {
 
     const classes = useStyles();
 
-  return (
+    return (
       <Box className={classes.wrapper}>
-         {newsFeed.map((article, index)=>(
-            <Article calssName = {classes.article} key = {index} data={article}/>
-        ))}
+         { newsFeed.map((article, index) => {
+
+            return <Article calssName = {classes.article} key = {index} data = {article} imgTrace={article.link.toString()} />
+         })}
      </Box>
-  )
+    )
 }
 
 export default Articles

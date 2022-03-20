@@ -5,14 +5,17 @@ import { makeStyles } from '@mui/styles'
 const useStyles = makeStyles({
     subHeadingContainer:{
         margin : 'auto',
-        backgroundColor: '#2EAF7D',
+        backgroundColor: '#ffffff',
         padding: '1rem',
-        width: '60%',
-        'border-radius': '1rem'
+        width: '70%',
+        'border-radius': '1rem',
+        boxShadow: '.2em .2em .5em rgba(0,0,0,.5)'
     },
     subHeading:{
         margin: 'auto',
-        color: '#FFFFFF'
+        color: '#black',
+        fontWeight: 'bold',
+        fontFamily: 'Lato, sans-serif'
     }
 })
 
@@ -20,7 +23,7 @@ function SubHeader() {
     const classes = useStyles();
   return (
     <Box className = {classes.subHeadingContainer}>
-    <p className = {classes.subHeading}>Hello There! In todays news: </p>
+    <h3 className = {classes.subHeading}>Hello There! In today's news: </h3>
     </Box>
     )
 }
