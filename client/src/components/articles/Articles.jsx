@@ -30,7 +30,7 @@ function Articles() {
             let src2 = await getTopStoriesBBC()
             let src3 = await getTopStoriesHindu()
             setNewsFeed([...src1.items, ...src2.items,...src3.items])
-            //console.log([...src1.items, ...src2.items,...src3.items]) 
+            console.log([...src1.items, ...src2.items,...src3.items]) 
         }
         catch(e){
             console.log(e)
@@ -45,7 +45,7 @@ function Articles() {
 
             return <Article calssName = {classes.article} key = {index} data = {article} imgTrace={article.link.toString()} />
          })}
-     </Box>
+     </Box>   
     )
 }
 

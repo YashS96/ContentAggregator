@@ -10,11 +10,11 @@ import bbcLogo from '../../images/bbc.png'
 
 const useStyles = makeStyles({
     articleContainer:{
-        margin : '2em',
+        margin : '2rem',
         broderRadius: '.3rem',
         padding: '1rem',
         fontWeight : 'bold',
-        boxShadow : '.3em .3em .5em rgba(0,0,0, .4), -.3em -.3em .5em rgba(0,0,0, .4), ',
+        // boxShadow : '.3em .3em .5em rgba(0,0,0, .4), -.3em -.3em .5em rgba(0,0,0, .4), ',
         '&:hover':{
             boxShadow : '.3em .3em .5em rgba(0,0,0, .4)'
         },
@@ -23,22 +23,37 @@ const useStyles = makeStyles({
     articleHeader: {
         fonstSize : 'large'
     },
+    articleContent: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'strech'
+    },
+    imageContainer: {
+        padding: '1em'
+
+    },
     image:{
-        width: '30%',
-        height: '50%',
-        padding: '2em'
+        maxWidth : '200px',
+        maxHeight: '200px',
+        borderRadius: '10px',
+        border: '1px solid black',
+        // boxShadow : '.3em .3em .5em rgba(0,0,0, .4), -.3em -.3em .5em rgba(0,0,0, .4), ',
+        '&:hover':{
+            boxShadow : '.3em .3em .5em rgba(0,0,0, .4)'
+        }
     },
     content: {
-        //display: 'flex',
         margin : 'auto',
         padding: '1rem',
         color: '#00458B'
 
     },
     cardFooter:{
-        padding:'1em',
-        margin:'1em',
-        color: 'black'
+        padding:'1rem',
+        margin:'1rem',
+        color: 'black',
+        paddingBottom: '1rem'
     }
 })
 
@@ -48,6 +63,7 @@ function Article(props) {
     let link = props.data.link
     let title = props.data.title
     let publishDate = props.data.isoDate
+    let contentSnippet= props.data.contentSnippet
     let imgSrc = '';
             
     if(link.toString().includes('ndtv')) {
@@ -62,26 +78,27 @@ function Article(props) {
     else
         imgSrc =''
     const classes = useStyles();
-  return (
-        <Card className={classes.articleContainer}>
-            <Grid className={classes.articleHeader} >
-                {title}
-            </Grid>
-            <CardContent >
-                <Grid className={classes.image}>
-                {<a href={link}><img src={imgSrc} alt='image'/></a> }
+    if(contentSnippet != null && contentSnippet != '')
+        return (
+            <Card className={classes.articleContainer}>
+                <Grid className={classes.articleHeader} >
+                    {title}
                 </Grid>
-                <Grid className={classes.content}>
-                     {content}
-                </Grid>
-                <a className={classes.cardFooter} href={link}><span><LanguageIcon/></span></a>
-                <span className={classes.cardFooter}><StarOutlineIcon/></span>
-                <span className={classes.cardFooter}>{category ? category : 'Top Story' }</span>
-                <span className={classes.cardFooter}>{publishDate.substring(0,10)}</span>
+                <CardContent className={classes.articleContent}>
+                    <Grid className={classes.imageContainer}>
+                    {<a href={link}><img className={classes.image} src={imgSrc} alt = "image"/> </a> }
+                    </Grid>
+                    <Grid className={classes.content}>
+                        {content}
+                    </Grid>
                 </CardContent>
-            {/* {console.log({title})} */}
-        </Card>
-  )
+                    <a className={classes.cardFooter} href={link}><span><LanguageIcon/></span></a>
+                    <span className={classes.cardFooter}><StarOutlineIcon/></span>
+                    <span className={classes.cardFooter}>{category ? category : 'Top Story' }</span>
+                    <span className={classes.cardFooter}>{publishDate.substring(0,10)}</span>
+            </Card>
+        )
+    else  return ('')
 }
 
 export default Article
