@@ -6,6 +6,7 @@ import { makeStyles } from '@mui/styles'
 import Header from './components/header/Header' 
 import SubHeader from './components/sub-header/SubHeader'
 import Articles from './components/articles/Articles'
+import Footer from './components/footer/Footer'
 
 const useStyles = makeStyles({
   app:{
@@ -27,6 +28,7 @@ function App() {
        <SubHeader/>
        <Articles/>
        </Box>
+       <Footer/>
      </Box>
     </div>
   );
