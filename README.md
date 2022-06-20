@@ -57,13 +57,31 @@ The Application back-end runs on **localhost:8000**
 ---
 
 ## Application Design
+  
+ - The application makes Http calls to the back-end server via ***axios*** and in the backend, the content is fetched through rss feeds from different news sources via async calls.
+ - The folder structure is a MVC.
+ - The database is a No-SQL database(MongoDB Atlas)
+ - For scaling the ***cluster*** module is used.
+ - For Testing the ***Mocha*** and ***Chai*** are used.
+ - For logging ***Winston*** is used.
+  
+#### Http end points
+  
+  - http://localhost:8000/ndtvfeed
+  - http://localhost:8000/bbcfeed
+  - http://localhost:8000/hindufeed
 
-#### - Front-End Components
+####  Front-end Components
+  - Articles:
+  - Header:
+  - SubHeader:
+  - Footer:
 
-#### - HTTP client and Server
----
-
-
+####  Back-end Server 
+  - Controllers:
+  - Content:
+  - DB Connection:
+  
 ---
 ## Resources
 
