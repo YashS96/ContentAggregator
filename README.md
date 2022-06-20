@@ -1,6 +1,6 @@
 # Content Aggregator
 
-*** Version 1.0.0***
+**Version 1.0.0**
 
 Content Aggregator is a rss feed reader web application that displays news by aggregating it from diffrent sources in short and scuccint manner.
 
