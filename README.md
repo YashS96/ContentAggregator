@@ -58,9 +58,9 @@ The Application back-end runs on **localhost:8000**
 
 ## Application Design
 
-#### Front-End Components
+#### - Front-End Components
 
-#### HTTP client and Server
+#### - HTTP client and Server
 ---
 
 
@@ -81,4 +81,4 @@ The Application back-end runs on **localhost:8000**
 
 **Mocha** : Refer to https://mochajs.org/ to understand the concepts of Mocha
 
-**Chai** : https://www.chaijs.com/ to understand the concepts of Chai
+**Chai** : Refer to https://www.chaijs.com/ to understand the concepts of Chai
