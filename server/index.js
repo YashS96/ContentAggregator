@@ -2,25 +2,47 @@ import express from 'express'; // lib import
 import cors from 'cors'
 import bodyParser from 'body-parser'
 import dotenv from 'dotenv'
+import cluster from 'cluster' // PM2 is a better tool for scaling to multiple cores
+import os from 'os'
 
 
 import Connection from './connection/db.js' // component import 
 import Route from './routes/route.js'
 import User from './model/user.js';
 
-const app = express();
+//cluster.IsPrimary vs cluster.IsMater (deprecated) 
+//cluster.isWorker
 
-app.use('/', cors());
-app.use('/', bodyParser.urlencoded({extended : true})); // body parser for urlencoded and json content types 
-app.use('/', bodyParser.json({extended : true}))
-app.use('/', Route)
+    if(cluster.isPrimary){
+        const cpuCount = os.cpus().length;
+        console.log(`CPU cores: ${cpuCount}`)
 
-dotenv.config();
+        // creating server for each CPU core
+        for(let i=0;i< cpuCount; i++){
+            cluster.fork();
+        }
+        // listeing to dying worker to spin them up again
+        cluster.on('exit', () => {
+            cluster.fork()
+        })
+    }
+    else{
+        const app = express();
 
-//env variables for global usage
-const username = process.env.DB_USERNAME;
-const password = process.env.DB_PASSWORD; 
+        app.use('/', cors());
+        app.use('/', bodyParser.urlencoded({extended : true})); // body parser for urlencoded and json content types 
+        app.use('/', bodyParser.json({extended : true}))
+        app.use('/', Route)
 
-Connection(username,password);
+        dotenv.config();
 
-app.listen(8000, ()=>console.log(`Sever running on port 8000`));
+        //env variables for global usage
+        const username = process.env.DB_USERNAME;
+        const password = process.env.DB_PASSWORD; 
+        const port = process.env.PORT
+
+        Connection(username,password);
+
+        app.listen(port, ()=>console.log(`Sever running on port ${port}`));
+    }
+
