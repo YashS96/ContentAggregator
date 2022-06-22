@@ -7,6 +7,7 @@ import os from 'os'
 
 
 import Connection from './connection/db.js' // component import 
+import logger from './logger/index.js' 
 import Route from './routes/route.js'
 import User from './model/user.js';
 
@@ -19,6 +20,7 @@ import User from './model/user.js';
 
         // creating server for each CPU core
         for(let i=0;i< cpuCount; i++){
+            logger.info(`forking ${i}:`)
             cluster.fork();
         }
         // listeing to dying worker to spin them up again
@@ -43,6 +45,6 @@ import User from './model/user.js';
 
         Connection(username,password);
 
-        app.listen(port, ()=>console.log(`Sever running on port ${port}`));
+        app.listen(port, ()=>logger.info(`Sever running on port ${port}`));
     }
 

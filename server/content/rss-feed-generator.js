@@ -1,4 +1,5 @@
 import rssParser from 'rss-parser'
+import logger from '../logger/index.js'
 
 const parser = new rssParser();
 
@@ -16,10 +17,10 @@ export let ndtv = async () =>{
         return topStories; 
     }
     catch(err){
-        console.log(`NDTV failed to deliver ${err}`)
+        logger.error(`NDTV failed to deliver ${err}`)
     }
     finally{
-        console.log(`NDTV successfully delivered!`)
+        logger.info(`NDTV successfully delivered!`)
     }
 }
 
@@ -34,10 +35,10 @@ export let hindu = async () =>{
         return topStories;
     }
     catch(err){
-        console.log(err)
+        logger.error(err)
     }
     finally{
-        console.log(`The Hindu successfully delivered!`)
+        logger.info(`The Hindu successfully delivered!`)
     }
 }
 
@@ -51,10 +52,10 @@ export let bbc = async () =>{
         return topStories;
     }
     catch(err){
-        console.log(err)
+        logger.error(err)
     }
     finally{
-        console.log(`BBC successfully delivered!`)
+        console.info(`BBC successfully delivered!`)
     }
 }
 
