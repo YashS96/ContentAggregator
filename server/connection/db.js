@@ -1,4 +1,5 @@
 import mongoose from 'mongoose'
+import logger from '../logger/index.js';
 
 //Async DB Connection method
 
@@ -18,7 +19,7 @@ import mongoose from 'mongoose'
 const connection=(username,password)=>{ 
     //substitue the DB username and pass
     mongoose.connect(`mongodb://${username}:${password}@content-aggregator-shard-00-00.ajhhe.mongodb.net:27017,content-aggregator-shard-00-01.ajhhe.mongodb.net:27017,content-aggregator-shard-00-02.ajhhe.mongodb.net:27017/content-aggregator?ssl=true&replicaSet=atlas-lqnuzj-shard-0&authSource=admin&retryWrites=true&w=majority`)
-    .then(()=>console.log(`DB connected!`))
-    .catch(err=>console.log(`Oops! DB connection err: ${err}`))
+    .then(()=>logger.info(`DB connected!`))
+    .catch(err=>logger.error(`Oops! DB connection err: ${err}`))
 }
 export default connection;
