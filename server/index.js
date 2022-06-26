@@ -9,6 +9,7 @@ import os from 'os'
 import Connection from './connection/db.js' // component import 
 import logger from './logger/index.js' 
 import Route from './routes/route.js'
+import AuthRoute from './routes/auth-routes.js';
 import User from './model/user.js';
 
 //cluster.IsPrimary vs cluster.IsMater (deprecated) 
@@ -34,6 +35,7 @@ import User from './model/user.js';
         app.use('/', cors());
         app.use('/', bodyParser.urlencoded({extended : true})); // body parser for urlencoded and json content types 
         app.use('/', bodyParser.json({extended : true}))
+        app.use('/', AuthRoute)
         app.use('/', Route)
 
         dotenv.config();

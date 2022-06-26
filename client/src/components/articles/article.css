@@ -1,0 +1,60 @@
+.articleContainer{
+    margin : 2rem;
+    border-radius: 3rem;
+    padding: 1rem;
+    font-weight:bold;
+     /* boxShadow : .3em .3em .5em rgba(0,0,0, .4), -.3em -.3em .5em rgba(0,0,0, .4),  */
+    font-family:  Montserrat, sans-serif;
+}
+.articleContainer :hover {
+    box-shadow : .3em .3em .5em rgba(0,0,0, .4);
+}
+
+.articleHeader {
+    font-size : large
+}
+.articleContent {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: strech;
+}
+
+.imageContainer {
+    padding: 1em
+
+}
+.image { 
+    max-width : 200px;
+    max-height: 200px;
+    border-radius: 10px;
+    border: 1px solid black;
+     /* boxShadow : .3em .3em .5em rgba(0,0,0, .4), -.3em -.3em .5em rgba(0,0,0, .4)*/
+}
+.image :hover {
+    box-shadow : .3em .3em .5em rgba(0,0,0, .4)
+}
+.content {
+    margin : auto;
+    padding: 1rem;
+    color: #00458B
+
+}
+.cardFooter {
+    padding: 1rem;
+    margin: .5rem;
+    color: black;
+    padding-bottom: 1rem
+}
+.cardFooter  a {
+    padding: 1rem;
+    margin: 1rem;
+    color: black;
+    padding-bottom: 1rem
+}
+.cardFooter span {
+    padding: .8rem;
+    margin: .5rem;
+    color: black;
+    padding-bottom: 1rem
+}
